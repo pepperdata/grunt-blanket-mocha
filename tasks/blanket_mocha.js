@@ -23,7 +23,6 @@ var reporters     = require('mocha').reporters;
 var helpers       = require('../support/mocha-helpers');
 
 module.exports = function(grunt) {
-
     var ok, totals, status, coverageThreshold, modulePattern, modulePatternRegex, excludedFiles, customThreshold, customModuleThreshold;
     // External lib.
     var phantomjs = require('grunt-lib-phantomjs').init(grunt);
@@ -122,7 +121,7 @@ module.exports = function(grunt) {
 
             if (modulePatternRegex) {
                 var match = filename.match(modulePatternRegex);
-				if (!match) return;
+                if (!match) return;
                 var moduleName = match[1];
                 if(!totals.moduleTotalStatements.hasOwnProperty(moduleName)) {
                     totals.moduleTotalStatements[moduleName] = 0;
@@ -269,12 +268,16 @@ module.exports = function(grunt) {
         }
 
         // Output errors on script errors
-        if (options.logErrors) {
+        if (options.logErrors || options.log) {
             phantomjs.on('error.*', function(error, stack) {
                 var formattedStack = _.map(stack, function(frame) {
                     return "    at " + (frame.function ? frame.function : "undefined") + " (" + frame.file + ":" + frame.line + ")";
                 }).join("\n");
-                grunt.fail.warn(error + "\n" + formattedStack, 3);
+                if (options.log) {
+                    grunt.log.error(error + "\n" + formattedStack, 3);
+                } else {
+                    grunt.fail.warn(error + "\n" + formattedStack, 3);
+                }
             });
         }
 
