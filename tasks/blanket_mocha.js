@@ -216,8 +216,10 @@ module.exports = function(grunt) {
             urls: [],
             // Fail with grunt.warn on first test failure
             bail: false,
-            // Log script errors as grunt errors
-            logErrors: false
+            // Log script errors
+            logErrors: false,
+            // Log script errors as grunt errors and therefore fail tests
+            failOnLoggedErrors: false
         });
 
         ok = true;
@@ -268,14 +270,14 @@ module.exports = function(grunt) {
         }
 
         // Output errors on script errors
-        if (options.logErrors || options.log) {
+        if (options.logErrors || options.failOnLoggedErrors) {
             phantomjs.on('error.*', function(error, stack) {
                 var formattedStack = _.map(stack, function(frame) {
                     return "    at " + (frame.function ? frame.function : "undefined") + " (" + frame.file + ":" + frame.line + ")";
                 }).join("\n");
-                if (options.log) {
+                if (options.failOnLoggedErrors) {
                     grunt.log.error(error + "\n" + formattedStack, 3);
-                } else {
+                } else if (options.logErrors) {
                     grunt.fail.warn(error + "\n" + formattedStack, 3);
                 }
             });
