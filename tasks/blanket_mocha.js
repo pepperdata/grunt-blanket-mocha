@@ -276,9 +276,11 @@ module.exports = function(grunt) {
                     return "    at " + (frame.function ? frame.function : "undefined") + " (" + frame.file + ":" + frame.line + ")";
                 }).join("\n");
                 if (options.failOnLoggedErrors) {
-                    grunt.log.error(error + "\n" + formattedStack, 3);
-                } else if (options.logErrors) {
+                    // print as a failing error
                     grunt.fail.warn(error + "\n" + formattedStack, 3);
+                } else if (options.logErrors) {
+                    // print a mean looking warning if we want to log errors
+                    grunt.log.error(error + "\n" + formattedStack, 3);
                 }
             });
         }
