@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ModelN/grunt-blanket-mocha.git"
+    "url": "git://github.com/ModelN/
+    blanket-mocha.git"
   },
   "bugs": {
     "url": "https://github.com/ModelN/grunt-blanket-mocha/issues"
@@ -35,7 +36,7 @@
   },
   "dependencies": {
     "blanket": "~1.1.6",
-    "grunt-lib-phantomjs": "~1.1.0",
+    "grunt-lib-phantomjs": "git://github.com/pepperdata/grunt-lib-phantomjs.git#104071705e98d9ebf2989d70aee6518168fec5b4",
     "mocha": "~2.0.1",
     "lodash": "~2.4.1"
   },
