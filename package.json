@@ -15,8 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ModelN/
-    blanket-mocha.git"
+    "url": "git://github.com/ModelN/grunt-blanket-mocha.git"
   },
   "bugs": {
     "url": "https://github.com/ModelN/grunt-blanket-mocha/issues"
