@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "blanket": "~1.1.6",
-    "grunt-lib-phantomjs": "git://github.com/pepperdata/grunt-lib-phantomjs.git#104071705e98d9ebf2989d70aee6518168fec5b4",
+    "grunt-lib-phantomjs": "git://github.com/pepperdata/grunt-lib-phantomjs.git#1.1.2",
     "mocha": "~2.0.1",
     "lodash": "~2.4.1"
   },
